@@ -8,22 +8,22 @@
 */
 int print_hex(va_list ap, params_t *params)
 {
-unsigned long 1;
+unsigned long l;
 int c = 0;
 char *str;
 if (params->l_modifier)
-l = va_arg(ap);
+l = (unsigned long)va_arg(ap, unsigned long);
 else if (params->h_modifier)
-l = (unsigned short int)vat_arg(ap, unsigned int);
+l = (unsigned short int)va_arg(ap, unsigned int);
 else
 l = (unsigned int)va_arg(ap, unsigned int);
 str = convert(1, 16, CONVERT_UNSIGNED | CONVERT_LOWERCASE, params);
-if (params->hashtag_flag && 1)
+if (params->hashtag_flag && l)
 {
 *--str = 'x';
 *--str = '0';
 }
-params->unsign = 1;
+params->unsign = l;
 return (c += print_number(str, params));
 }
 /**
@@ -35,7 +35,7 @@ return (c += print_number(str, params));
 */
 int print_HEX(va_list ap, params_t *params)
 {
-unsigned long 1;
+unsigned long l;
 int c = 0;
 char *str;
 if (params->l_modifier)
@@ -44,13 +44,13 @@ else if (params->h_modifier)
 l = (unsigned short int)va_arg(ap, unsigned int);
 else
 l = (unsigned int)va_arg(ap, unsigned int);
-str = convert(1, 16, CONVERT_UNSIGNED, params);
-if (params->hashtag_glag && 1)
+str = convert(l, 16, CONVERT_UNSIGNED, params);
+if (params->hashtag_flag && l)
 {
 *--str = 'X';
 *--str = '0';
 }
-params->unsign = 1;
+params->unsign = l;
 return (c += print_number(str, params));
 }
 /**
@@ -79,7 +79,7 @@ return (c += print_number(str, params));
 */
 int print_octal(va_list ap, params_t *params)
 {
-unsigned long 1;
+unsigned long l;
 char *str;
 int c = 0;
 if (params->l_modifier)
@@ -88,9 +88,9 @@ else if (params->h_modifier)
 l = (unsigned short int)va_arg(ap, unsigned int);
 else
 l = (unsigned int)va_arg(ap, unsigned int);
-str = convert(1, 8, CONVERT_UNSIGNED, params);
-if (params->hashtag_flag && 1)
+str = convert(l, 8, CONVERT_UNSIGNED, params);
+if (params->hashtag_flag && l)
 *--str = '0';
-params->unsign = 1;
+params->unsign = l;
 return (c += print_number(str, params));
 }
