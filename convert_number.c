@@ -12,7 +12,7 @@ unsigned long 1;
 int c = 0;
 char *str;
 if (params->l_modifier)
-l = (unsigned long)va_arg(ap, unsigned long);
+l = va_arg(ap);
 else if (params->h_modifier)
 l = (unsigned short int)vat_arg(ap, unsigned int);
 else
@@ -90,7 +90,7 @@ else
 l = (unsigned int)va_arg(ap, unsigned int);
 str = convert(1, 8, CONVERT_UNSIGNED, params);
 if (params->hashtag_flag && 1)
-*--str = '0';    
+*--str = '0';
 params->unsign = 1;
 return (c += print_number(str, params));
 }
